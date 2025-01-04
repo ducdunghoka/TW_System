@@ -1,0 +1,274 @@
+﻿@{
+    ViewData["Title"] = "Sign Up";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SignUp</title>
+    <link href="~/css/devextreme/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/devextreme/dx.common.css" rel="stylesheet" />
+    <link href="~/css/devextreme/dx.carmine.css" rel="stylesheet" />
+    <link href="~/css/signup.css" rel="stylesheet" />
+    @* <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> *@
+
+
+    <script src="~/js/devextreme/jquery.js"></script>
+    <script src="~/js/devextreme/dx.all.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.data.js"></script>
+    <script src="~/js/devextreme/aspnet/dx.aspnet.mvc.js"></script>
+</head>
+<style>
+    .password-container {
+        position: relative;
+    }
+
+    .password-icon {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .dx-textbox.dx-widget input {
+        padding-right: 30px;
+        /* Ensure space for the icon */
+    }
+</style>
+
+<body>
+    <div class="signup-page">
+        <div class="webname"></div>
+        <div class="content">
+            <form id="form" method="post" action="/SignUp">
+                <input type="hidden" name="ReturnUrl" value="" />
+                <input type="hidden" name="host" value="" />
+                <div class="form-group">
+                    <div class="lable">Tài khoản</div>
+                    <div class="input-icon">
+                        <script>DevExpress.config({ "serverDecimalSeparator": "." }); DevExpress.aspnet.setTemplateEngine();</script>
+                        <div id="devextreme0"></div>
+                        <script>
+                            jQuery(function ($) {
+                                $("#devextreme0").dxTextBox({ "name": "Username", "inputAttr": { "id": "Username" } })
+                                    .dxValidator({
+                                        validationRules: [{
+                                            type: 'required',
+                                            message: 'Username is required',
+                                        }, {
+                                            type: 'username',
+                                            message: 'Username is invalid',
+                                        }, {
+                                            type: 'async',
+                                            message: 'Username is already registered',
+                                            validationCallback(params) {
+                                                return sendRequest(params.value);
+                                            },
+                                        }],
+                                    });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="lable">Họ tên</div>
+                    <div class="input-icon">
+                        <script>DevExpress.config({ "serverDecimalSeparator": "." }); DevExpress.aspnet.setTemplateEngine();</script>
+                        <div id="devextreme1"></div>
+                        <script>
+                            jQuery(function ($) {
+                                $("#devextreme1").dxTextBox({ "name": "Fullname", "inputAttr": { "id": "Fullname" } })
+                                    .dxValidator({
+                                        validationRules: [{
+                                            type: 'required',
+                                            message: 'Fullname is required',
+                                        }, {
+                                            type: 'fullname',
+                                            message: 'Fullname is invalid',
+                                        }, {
+                                            type: 'async',
+                                            message: 'Fullname is already registered',
+                                            validationCallback(params) {
+                                                return sendRequest(params.value);
+                                            },
+                                        }],
+                                    });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="lable">Email</div>
+                    <div class="input-icon">
+                        <script>DevExpress.config({ "serverDecimalSeparator": "." }); DevExpress.aspnet.setTemplateEngine();</script>
+                        <div id="devextreme2"></div>
+                        <script>
+                            jQuery(function ($) {
+                                $("#devextreme2").dxTextBox({ "name": "Email", "inputAttr": { "id": "Email" } })
+                                    .dxValidator({
+                                        validationRules: [{
+                                            type: 'required',
+                                            message: 'Email is required',
+                                        }, {
+                                            type: 'email',
+                                            message: 'Email is invalid',
+                                        }, {
+                                            type: 'async',
+                                            message: 'Email is already registered',
+                                            validationCallback(params) {
+                                                return sendRequest(params.value);
+                                            },
+                                        }],
+                                    });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="lable">Số điện thoại</div>
+                    <div class="input-icon">
+                        <script>DevExpress.config({ "serverDecimalSeparator": "." }); DevExpress.aspnet.setTemplateEngine();</script>
+                        <div id="devextreme3"></div>
+                        <script>
+                            jQuery(function ($) {
+                                $("#devextreme3").dxTextBox({ "name": "Phone", "inputAttr": { "id": "Phone" } })
+                                    .dxValidator({
+                                        validationRules: [{
+                                            type: 'required',
+                                            message: 'Phone is required',
+                                        }, {
+                                            type: 'phone',
+                                            message: 'Phone is invalid',
+                                        }, {
+                                            type: 'async',
+                                            message: 'Phone is already registered',
+                                            validationCallback(params) {
+                                                return sendRequest(params.value);
+                                            },
+                                        }],
+                                    });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="lable">Địa chỉ</div>
+                    <div class="input-icon">
+                        <script>DevExpress.config({ "serverDecimalSeparator": "." }); DevExpress.aspnet.setTemplateEngine();</script>
+                        <div id="devextreme4"></div>
+                        <script>
+                            jQuery(function ($) {
+                                $("#devextreme4").dxTextBox({ "name": "Address", "inputAttr": { "id": "Address" } })
+                                    .dxValidator({
+                                        validationRules: [{
+                                            type: 'required',
+                                            message: 'Address is required',
+                                        }, {
+                                            type: 'address',
+                                            message: 'Address is invalid',
+                                        }, {
+                                            type: 'async',
+                                            message: 'Address is already registered',
+                                            validationCallback(params) {
+                                                return sendRequest(params.value);
+                                            },
+                                        }],
+                                    });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="lable">Mật khẩu</div>
+                    <div class="password-container">
+                        <div id="devextreme5"></div>
+                        <span id="togglePassword" class="password-icon">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                        <script>
+                            jQuery(function ($) {
+                                $("#devextreme5").dxTextBox({
+                                    "name": "password",
+                                    "mode": "Password",
+                                    "inputAttr": { "id": "Password" }
+                                }).dxValidator({
+                                    validationRules: [{
+                                        type: 'required',
+                                        message: 'Password is required',
+                                    }, {
+                                        type: 'password',
+                                        message: 'Password is invalid',
+                                    }, {
+                                        type: 'async',
+                                        message: 'Password is already registered',
+                                        validationCallback(params) {
+                                            return sendRequest(params.value);
+                                        },
+                                    }],
+                                });
+
+                                // $("#togglePassword").on('click', function () {
+                                //     var passwordField = $("#Password");
+                                //     var type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+                                //     passwordField.attr('type', type);
+                                //     $(this).find('i').toggleClass('fa-eye fa-eye-slash');
+                                // });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="lable">Xác nhận mật khẩu</div>
+                    <div class="password-container">
+                        <div id="devextreme6"></div>
+                        <span id="toggleConfirmPassword" class="password-icon">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                        <script>
+                            jQuery(function ($) {
+                                $("#devextreme6").dxTextBox({
+                                    "name": "confirmPassword",
+                                    "mode": "Password",
+                                    "inputAttr": { "id": "ConfirmPassword" }
+                                })
+                                    .dxValidator({
+                                        validationRules: [{
+                                            type: 'required',
+                                            message: 'ConfirmPassword is required',
+                                        }, {
+                                            type: 'confirmPassword',
+                                            message: 'ConfirmPassword is invalid',
+                                        }, {
+                                            type: 'async',
+                                            message: 'ConfirmPassword is already registered',
+                                            validationCallback(params) {
+                                                return sendRequest(params.value);
+                                            },
+                                        }],
+                                    });
+
+                                // $("#toggleConfirmPassword").on('click', function () {
+                                //     var confirmPasswordField = $("#ConfirmPassword");
+                                //     var type = confirmPasswordField.attr('type') === 'password' ? 'text' : 'password';
+                                //     confirmPasswordField.attr('type', type);
+                                //     $(this).find('i').toggleClass('fa-eye fa-eye-slash');
+                                // });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="form-group" style="line-height:none; margin-top:10px">
+                    <div id="devextreme7"></div>
+                    <script>jQuery(function ($) { $("#devextreme7").dxButton({ "text": "SIGN UP", "useSubmitBehavior": true, "type": "default", "elementAttr": { "class": "btn-style" } }); });</script>
+                </div>
+
+                <h3 class="text_signup">
+                    @TempData["SignUpMessage"]
+                </h3>
+            </form>
+        </div>
+    </div>
+</body>

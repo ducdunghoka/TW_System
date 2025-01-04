@@ -1,0 +1,214 @@
+// Các biến có thể dùng sau này nếu cần
+$background-image-url: '/images/background.png';
+$logo-url: '/images/logo.png';
+$primary-color: #2196f3;
+$secondary-color: #4caf50;
+$font-family: 'Cambria';
+
+// Các styles
+html,
+body {
+    height: 100%;
+}
+
+body {
+    //background-image: url($background-image-url);
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    background-position: center;
+    font-family: $font-family;
+    height: 100%;
+}
+
+.login-page-one {
+    background-size: cover;
+}
+
+.signup-page {
+    width: 740px;
+    margin: 10% auto 0;
+    box-shadow: 0px 6px 16px -7px #000;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -300px;
+    border: 1px solid $primary-color;
+    background-color: #f5f5f5;
+    position: relative;
+    height: 680px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    .webname {
+        background-image: url(/images/banner.png);
+        width: 100%;
+        height: 60px;
+        border-bottom: 1px solid $primary-color;
+        line-height: 60px;
+        text-align: center;
+        font-size: 1.8em;
+        font-weight: 700;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .content {
+        width: 100%;
+        height: 240px;
+        position: relative;
+
+        #form {
+            margin-left: 30px;
+            margin-right: 30px;
+            padding: 10px;
+
+            .text_signup {
+                font-size: 12px;
+                text-align: center;
+                font-style: italic;
+                color: red;
+            }
+
+            .lable {
+                width: 100%;
+                font-family: $font-family;
+                font-style: italic;
+                color: #000;
+            }
+
+            .btn-style {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.bb {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    pointer-events: none;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    background: url($logo-url) no-repeat 50%/70% transparent;
+    color: $secondary-color;
+    z-index: 9999;
+    box-shadow: inset 0 0 0 1px rgba(76, 175, 80, 0.5);
+
+    &::before,
+    &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: '';
+        z-index: -1;
+        margin: -5%;
+        box-shadow: inset 0 0 0 2px;
+        animation: clipMe 8s linear infinite;
+    }
+
+    &::before {
+        animation-delay: -4s;
+    }
+
+    &:hover::after,
+    &:hover::before {
+        background-color: rgba(255, 0, 0, 0.3);
+    }
+}
+
+@keyframes clipMe {
+
+    0%,
+    100% {
+        clip: rect(0px, 220px, 2px, 0px);
+    }
+
+    25% {
+        clip: rect(0px, 2px, 220px, 0px);
+    }
+
+    50% {
+        clip: rect(218px, 220px, 220px, 0px);
+    }
+
+    75% {
+        clip: rect(0px, 220px, 220px, 218px);
+    }
+}
+
+.webname {
+    animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) both, color-change 5s infinite;
+}
+
+@-webkit-keyframes color-change {
+    0% {
+        color: #f44336;
+    }
+
+    10% {
+        color: #e91e63;
+    }
+
+    20% {
+        color: #9c27b0;
+    }
+
+    30% {
+        color: #673ab7;
+    }
+
+    40% {
+        color: #3f51b5;
+    }
+
+    50% {
+        color: #2196f3;
+    }
+
+    60% {
+        color: #03a9f4;
+    }
+
+    70% {
+        color: #00bcd4;
+    }
+
+    80% {
+        color: $secondary-color;
+    }
+
+    90% {
+        color: #8bc34a;
+    }
+
+    100% {
+        color: #ff9800;
+    }
+}
+
+footer {
+    bottom: 0px;
+    position: absolute;
+    left: 0px;
+}
+
+@keyframes tracking-in-contract {
+    0% {
+        letter-spacing: 1em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: .6;
+    }
+
+    100% {
+        letter-spacing: normal;
+        opacity: 1;
+    }
+}
