@@ -7,9 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TW.Models;
+using TW_System.Models;
 
-namespace TW.Common
+namespace TW_System.Common
 {
 	public interface IMySessions
 	{

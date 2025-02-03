@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TW.Common
+namespace TW_System.Common
 {
 	public class CustomAuthorizeRequirement : IAuthorizationRequirement
 	{

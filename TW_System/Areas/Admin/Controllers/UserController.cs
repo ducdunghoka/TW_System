@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TW.Common;
-using TW.Models;
+using TW_System.Models;
 
 namespace TW_System.Areas.Admin.Controllers
 {
@@ -26,24 +26,31 @@ namespace TW_System.Areas.Admin.Controllers
 			if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone) || string.IsNullOrEmpty(address) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
 			{
 				TempData["SignUpMessage"] = "Cần điền đủ thông tin";
-				return RedirectToAction("signUp", "account");
+				return RedirectToAction("signUp", "user");
 			}
 			if (password != confirmPassword)
 			{
 				TempData["SignUpMessage"] = "Mật khẩu không trùng nhau";
-				return RedirectToAction("signUp", "account");
+				return RedirectToAction("signUp", "user");
 			}
 			if (phone.Length < 9 || phone.Length > 10 || !phone.StartsWith("0"))
 			{
 				TempData["SignUpMessage"] = $"Số điện thoại không hợp lệ {phone}";
-				return RedirectToAction("signUp", "account");
+				return RedirectToAction("signUp", "user");
 			}
-			var account = db.TW_Users.FirstOrDefault(x => x.Account.Trim() == username.Trim() && x.Email.Trim() == email.Trim() && x.Phone.Trim() == phone.Trim()
-			&& x.Address.Trim() == address.Trim());
+			if (db == null)
+			{
+				return BadRequest("null");
+			}
+			if (db.TW_Users == null)
+			{
+				return BadRequest("null");
+			}
+			var account = db.TW_Users.FirstOrDefault(x => x.Account.Trim() == username.Trim() && x.Email.Trim() == email.Trim() && x.Phone.Trim() == phone.Trim() && x.Address.Trim() == address.Trim());
 			if (account != null)
 			{
 				TempData["SignUpMessage"] = "Thông tin tài khoản đã tồn tại";
-				return RedirectToAction("signUp", "account");
+				return RedirectToAction("signUp", "user");
 			}
 			var maxCode = db.TW_Users.Max(x => x.No);
 			int maxCodeInt = 0;
@@ -65,7 +72,7 @@ namespace TW_System.Areas.Admin.Controllers
 			};
 			db.TW_Users.Add(account);
 			await db.SaveChangesAsync();
-			return RedirectToAction("Login", "Account");
+			return RedirectToAction("Login", "User");
 		}
 	}
 }

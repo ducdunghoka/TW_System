@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Emit;
 
-namespace TW.Models
+namespace TW_System.Models
 {
 	public class TWContext : DbContext
 	{
@@ -44,7 +44,7 @@ namespace TW.Models
 		public string Phone { get; set; }
 		public int Role { get; set; }
 		public DateTime? BirthDate { get; set; }
-		public string Password { get; set; }
+		public string Password { get; set; } 
 		public DateTime CreatedAt { get; set; }
 		public bool IsDeleted { get; set; }
 	}
